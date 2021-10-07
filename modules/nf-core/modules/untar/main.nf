@@ -30,9 +30,9 @@ process UNTAR {
     """
     tar \\
         -xzvf \\
-        --no-same-owner \\
         $options.args \\
-        $archive
+        $archive \\
+        --no-same-owner
 
     cat <<-END_VERSIONS > versions.yml
     ${getProcessName(task.process)}:
