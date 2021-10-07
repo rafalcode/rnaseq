@@ -30,6 +30,7 @@ process UNTAR {
     """
     tar \\
         -xzvf \\
+        --no-same-owner \\
         $options.args \\
         $archive
 
