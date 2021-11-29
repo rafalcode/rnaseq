@@ -50,7 +50,7 @@ process RSEM_PREPAREREFERENCE {
             rsem/genome
 
         mkdir -p transcript
-        cp rsem/genome.transcripts.fa transcript/genome.transcripts.fa
+        mv rsem/genome.transcripts.fa transcript/genome.transcripts.fa
 
         cat <<-END_VERSIONS > versions.yml
         ${getProcessName(task.process)}:
@@ -68,7 +68,7 @@ process RSEM_PREPAREREFERENCE {
             rsem/genome
 
         mkdir -p transcript
-        cp rsem/genome.transcripts.fa transcript/genome.transcripts.fa
+        mv rsem/genome.transcripts.fa transcript/genome.transcripts.fa
 
         cat <<-END_VERSIONS > versions.yml
         ${getProcessName(task.process)}:
