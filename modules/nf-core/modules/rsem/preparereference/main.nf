@@ -24,7 +24,7 @@ process RSEM_PREPAREREFERENCE {
 
     output:
     path "rsem"                      , emit: index
-    path "rsem/genome.transcripts.fa", emit: transcript_fasta
+    path "transcript", emit: transcript_fasta
     path "versions.yml"              , emit: versions
 
     script:
@@ -49,6 +49,8 @@ process RSEM_PREPAREREFERENCE {
             $fasta \\
             rsem/genome
 
+        cp rsem/genome.transcripts.fa transcript/genome.transcripts.fa
+
         cat <<-END_VERSIONS > versions.yml
         ${getProcessName(task.process)}:
             ${getSoftwareName(task.process)}: \$(rsem-calculate-expression --version | sed -e "s/Current version: RSEM v//g")
@@ -63,6 +65,8 @@ process RSEM_PREPAREREFERENCE {
             $options.args \\
             $fasta \\
             rsem/genome
+            
+        cp rsem/genome.transcripts.fa transcript/genome.transcripts.fa
 
         cat <<-END_VERSIONS > versions.yml
         ${getProcessName(task.process)}:
