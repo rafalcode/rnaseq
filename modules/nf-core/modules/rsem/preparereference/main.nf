@@ -49,6 +49,7 @@ process RSEM_PREPAREREFERENCE {
             $fasta \\
             rsem/genome
 
+        mkdir -p transcript
         cp rsem/genome.transcripts.fa transcript/genome.transcripts.fa
 
         cat <<-END_VERSIONS > versions.yml
@@ -65,7 +66,8 @@ process RSEM_PREPAREREFERENCE {
             $options.args \\
             $fasta \\
             rsem/genome
-            
+
+        mkdir -p transcript
         cp rsem/genome.transcripts.fa transcript/genome.transcripts.fa
 
         cat <<-END_VERSIONS > versions.yml
