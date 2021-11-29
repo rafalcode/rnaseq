@@ -23,9 +23,9 @@ process RSEM_PREPAREREFERENCE {
     path gtf
 
     output:
-    path "rsem"                , emit: index
-    path "rsem/*transcripts.fa", emit: transcript_fasta
-    path "versions.yml"        , emit: versions
+    path "rsem"                      , emit: index
+    path "rsem/genome.transcripts.fa", emit: transcript_fasta
+    path "versions.yml"              , emit: versions
 
     script:
     def args     = options.args.tokenize()
