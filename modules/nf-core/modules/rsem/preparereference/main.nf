@@ -23,9 +23,9 @@ process RSEM_PREPAREREFERENCE {
     path gtf
 
     output:
-    path "rsem/genome.{chrlist,fa,grp,idx.fa,n2g.idx.fa,seq,ti}", emit: index
-    path "rsem/genome.transcripts.fa",                       emit: transcript_fasta
-    path "versions.yml"              ,                       emit: versions
+    path "rsem"           , emit: index
+    path "*transcripts.fa", emit: transcript_fasta
+    path "versions.yml"   , emit: versions
 
     script:
     def args     = options.args.tokenize()
@@ -48,6 +48,8 @@ process RSEM_PREPAREREFERENCE {
             ${args.join(' ')} \\
             $fasta \\
             rsem/genome
+        
+        cp rsem/genome.transcripts.fa .
 
         cat <<-END_VERSIONS > versions.yml
         ${getProcessName(task.process)}:
@@ -63,6 +65,8 @@ process RSEM_PREPAREREFERENCE {
             $options.args \\
             $fasta \\
             rsem/genome
+        
+        cp rsem/genome.transcripts.fa .
 
         cat <<-END_VERSIONS > versions.yml
         ${getProcessName(task.process)}:
