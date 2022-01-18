@@ -9,6 +9,6 @@ tasks:
       ./mconfig
       make -C builddir
       sudo make -C builddir install
-      cd
+      cd ..
       bash install_nf.sh
       nextflow run main.nf -profile test,singularity
