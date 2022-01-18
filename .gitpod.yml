@@ -6,3 +6,9 @@ tasks:
       wget https://github.com/sylabs/singularity/archive/refs/tags/v3.9.3.tar.gz
       tar xzf v3.9.3.tar.gz
       cd singularity-3.9.3
+      ./mconfig
+      make -C builddir
+      sudo make -C builddir install
+      cd
+      bash install_nf.sh
+      nextflow run main.nf -profile test,singularity
